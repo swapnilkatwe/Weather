@@ -30,6 +30,19 @@ final class WeatherInfoViewModelTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
+    func testAllProperties() {
+        XCTAssertNotNil(subject.cityName)
+        XCTAssertNotNil(subject.weatherImageUrl)
+        XCTAssertNotNil(subject.weatherDescription)
+        XCTAssertNotNil(subject.currentTemperature)
+        XCTAssertNotNil(subject.currentDate)
+    }
+
+    func testCurrentWeather() throws {
+        XCTAssertNoThrow(subject.getCurrentWeather())
+        XCTAssertNoThrow(subject.getActualLocationWeather())
+    }
+
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
