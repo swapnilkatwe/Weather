@@ -10,15 +10,26 @@ import CoreLocation
 
 class SessionManager {
     static let shared = SessionManager()
-    private var coordidate: CLLocationCoordinate2D? = CLLocationCoordinate2D(latitude: 40.7128, longitude: 74.0060) // Defaulkt New york
     init() { }
     
     var currentCoordinate: CLLocationCoordinate2D? {
         get {
-            return coordidate
+            return getLocation
         }
         set {
-            coordidate = newValue
+            saveLocattion(newValue)
         }
+    }
+
+    // Saving location in keychain to retrive again
+    private func saveLocattion(_ coordinate: CLLocationCoordinate2D?) {
+        KeychainManager().saveDouble(coordinate?.latitude ?? 0.0, forKey: Constants().coordinateLatitude)
+        KeychainManager().saveDouble(coordinate?.longitude ?? 0.0, forKey: Constants().coordinateLongitude)
+    }
+    
+    private var getLocation: CLLocationCoordinate2D? {
+        let lat = KeychainManager().doubleForKey(Constants().coordinateLatitude) ?? 0.0
+        let long = KeychainManager().doubleForKey(Constants().coordinateLongitude) ?? 0.0
+        return CLLocationCoordinate2D(latitude: lat, longitude: long)
     }
 }

@@ -20,6 +20,23 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s98-DG-oxs">
                                 <rect key="frame" x="16" y="126" width="361" height="60"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e8x-Ym-d3P">
+                                        <rect key="frame" x="0.0" y="0.0" width="53" height="60"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="location" catalog="system"/>
+                                        <connections>
+                                            <action selector="currentLocationPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="teb-eO-LIB"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F1S-Qs-z5f">
+                                        <rect key="frame" x="53" y="0.0" width="255" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="255" id="4XF-vt-m9a"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AU2-nv-N8n">
                                         <rect key="frame" x="313" y="10" width="40" height="40"/>
                                         <constraints>
@@ -32,15 +49,6 @@
                                             <action selector="searchButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YYj-wM-gx8"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F1S-Qs-z5f">
-                                        <rect key="frame" x="53" y="0.0" width="255" height="60"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="255" id="4XF-vt-m9a"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -48,8 +56,12 @@
                                     <constraint firstAttribute="height" constant="60" id="7bX-LX-2TO"/>
                                     <constraint firstItem="AU2-nv-N8n" firstAttribute="centerY" secondItem="s98-DG-oxs" secondAttribute="centerY" id="Ave-n2-82N"/>
                                     <constraint firstItem="F1S-Qs-z5f" firstAttribute="top" secondItem="s98-DG-oxs" secondAttribute="top" id="L1i-J0-8Ib"/>
+                                    <constraint firstAttribute="bottom" secondItem="e8x-Ym-d3P" secondAttribute="bottom" id="c2Z-yG-HQO"/>
                                     <constraint firstAttribute="bottom" secondItem="F1S-Qs-z5f" secondAttribute="bottom" id="gHs-Ml-ob4"/>
                                     <constraint firstAttribute="trailing" secondItem="AU2-nv-N8n" secondAttribute="trailing" constant="8" id="hW0-Gr-RAz"/>
+                                    <constraint firstItem="F1S-Qs-z5f" firstAttribute="leading" secondItem="e8x-Ym-d3P" secondAttribute="trailing" id="sKs-NP-OEW"/>
+                                    <constraint firstItem="e8x-Ym-d3P" firstAttribute="top" secondItem="s98-DG-oxs" secondAttribute="top" id="wVP-Zs-ru0"/>
+                                    <constraint firstItem="e8x-Ym-d3P" firstAttribute="leading" secondItem="s98-DG-oxs" secondAttribute="leading" id="yFy-8i-x6z"/>
                                 </constraints>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i0s-0A-6Oy">
@@ -156,7 +168,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SearchTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchTableViewCell" id="rfw-XM-woi" customClass="SearchTableViewCell" customModule="YourWeather" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SearchTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchTableViewCell" id="rfw-XM-woi" customClass="SearchTableViewCell" customModule="WeatherInfo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rfw-XM-woi" id="Pce-za-yOI">
@@ -260,6 +272,7 @@
     <resources>
         <image name="arrow.backward" catalog="system" width="128" height="95"/>
         <image name="arrowshape.left.fill" catalog="system" width="128" height="104"/>
+        <image name="location" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

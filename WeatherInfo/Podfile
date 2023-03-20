@@ -7,6 +7,7 @@ target 'WeatherInfo' do
 
   # Pods for WeatherInfo
   pod 'Alamofire'
+  pod 'SwiftKeychainWrapper'
 
   target 'WeatherInfoTests' do
     inherit! :search_paths

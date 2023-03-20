@@ -12,4 +12,9 @@ struct Constants {
     let baseUrl = "https://api.openweathermap.org/data/2.5/"
     let imageBaseUrl = "https://openweathermap.org/img/wn/"
     let geoCodeUrl = "https://api.openweathermap.org/geo/1.0/"
+    
+    let kelvinNumber = 273.15
+    let coordinateLatitude = "Coordinate-Latitude"
+    let coordinateLongitude = "Coordinate-Longitude"
 }
+

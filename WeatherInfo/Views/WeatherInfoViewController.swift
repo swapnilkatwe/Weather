@@ -19,7 +19,6 @@ class WeatherInfoViewController: UIViewController {
     @IBOutlet weak var weatherStateImageView: UIImageView!
     @IBOutlet weak var searchButton: UIButton!
     
-    private let refreshControl = UIRefreshControl()
     var viewModel = WeatherInfoViewModel()
 
     //MARK: - lyfecycle
@@ -53,5 +52,11 @@ class WeatherInfoViewController: UIViewController {
         controller.viewModel.delegate = self.viewModel
         controller.modalPresentationStyle = .overFullScreen
         present(controller, animated: true, completion: nil)
+    }
+
+    @IBAction func currentLocationPressed(_ sender: UIBarButtonItem) {
+        DispatchQueue.main.async {
+            self.viewModel.getActualLocationWeather()
+        }
     }
 }

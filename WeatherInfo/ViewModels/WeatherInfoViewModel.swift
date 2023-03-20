@@ -22,9 +22,10 @@ class WeatherInfoViewModel: NSObject {
         dateFormater(date: currentWeather?.dt, dateFormat: "HH:mm, dd MMMM yy")
     }
 
+    // Current temperature converting from Kelvin to celsius
     var currentTemperature: String {
         guard let temperature = currentWeather?.main?.temp else { return "-°" }
-        return "\((temperature - 273.15).doubleToString())°"
+        return "\((temperature - Constants().kelvinNumber).doubleToString())°"
     }
     
     var weatherDescription: String {
@@ -42,8 +43,19 @@ class WeatherInfoViewModel: NSObject {
     }
     
     //MARK: - Location
-    func getCurrentLocation() {
+    func getActualLocationWeather() {
+        print("--> getActualLocationWeather")
         actualLocation()
+    }
+
+    func getCurrentLocation() {
+        if let coordinate = SessionManager().currentCoordinate {
+            print("--> lat long there \(coordinate)")
+            getCurrentWeather()
+        } else {
+            print("--> no lat long available")
+            actualLocation()
+        }
     }
 
     //MARK: - Helpers
