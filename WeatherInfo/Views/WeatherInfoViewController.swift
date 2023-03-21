@@ -24,6 +24,7 @@ class WeatherInfoViewController: UIViewController {
     //MARK: - lyfecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        getActualLocationWeather()
         currentLocation()
         setup()
     }
@@ -46,6 +47,12 @@ class WeatherInfoViewController: UIViewController {
         }
     }
     
+    private func getActualLocationWeather() {
+        DispatchQueue.main.async {
+            self.viewModel.getActualLocationWeather()
+        }
+    }
+
     //MARK: - IBActions
     @IBAction func searchButtonPressed(_ sender: UIBarButtonItem) {
         guard let controller = storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController else { return }

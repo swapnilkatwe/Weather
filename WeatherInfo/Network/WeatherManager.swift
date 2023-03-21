@@ -18,9 +18,9 @@ class WeatherManager {
             completion(.failure(error))
             return
         }
+        let stringUrl = Constants().baseUrl + "weather?lat=\(latitude)&lon=\(longitude)&appid=\(Constants().apiKey)"
+        guard let url = stringUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
 
-        let url = Constants().baseUrl + "weather?lat=\(latitude)&lon=\(longitude)&appid=\(Constants().apiKey)"
-        
         AlamofireManager.executeRequest(url) { result in
             switch result {
             case .success(let json):
@@ -39,7 +39,10 @@ class WeatherManager {
     
     public func searchResults(searchText: String, completion: @escaping (Result<CityList>) -> Void) {
         if searchText.count > 2 {
-            AlamofireManager.executeRequest(Constants().geoCodeUrl + "direct?q=\(searchText)&limit=5&appid=\(Constants().apiKey)", method: .get) { result in
+            let stringUrl = Constants().geoCodeUrl + "direct?q=\(searchText)&limit=5&appid=\(Constants().apiKey)"
+            guard let url = stringUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
+
+            AlamofireManager.executeRequest(url, method: .get) { result in
                 switch result {
                 case .success(let json):
                     do {

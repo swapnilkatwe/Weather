@@ -49,7 +49,6 @@ class SearchViewModel: NSObject {
             case .success(let cityList):
                 self?.filteredCities = cityList
                 self?.createCell()
-                print("-->\(cityList)")
             case .failure(let error):
                 print(error)
             }

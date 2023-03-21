@@ -44,16 +44,13 @@ class WeatherInfoViewModel: NSObject {
     
     //MARK: - Location
     func getActualLocationWeather() {
-        print("--> getActualLocationWeather")
         actualLocation()
     }
 
     func getCurrentLocation() {
-        if let coordinate = SessionManager().currentCoordinate {
-            print("--> lat long there \(coordinate)")
+        if SessionManager().currentCoordinate != nil {
             getCurrentWeather()
         } else {
-            print("--> no lat long available")
             actualLocation()
         }
     }

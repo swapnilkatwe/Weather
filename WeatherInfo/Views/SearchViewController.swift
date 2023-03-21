@@ -30,7 +30,6 @@ class SearchViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-//        self.navigationController?.navigationBar.tintColor = .white
     }
 
     //MARK: - IBActions
@@ -43,9 +42,7 @@ class SearchViewController: UIViewController {
     private func updateUI() {
         searchNavigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         searchNavigationBar.topItem?.title = "Search Location" //.localize
-//        searchNavigationBar.tintColor = .white
         searchBar.delegate = self
-//        searchBar.searchTextField.backgroundColor = .clear
         searchBar.searchTextField.textColor = .black
         searchBar.searchTextField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
     }
@@ -54,7 +51,6 @@ class SearchViewController: UIViewController {
         viewModel.reloadTablView = {
             DispatchQueue.main.async { self.searchTableView.reloadData() }
         }
-//        viewModel.getCity()
     }
 }
 
