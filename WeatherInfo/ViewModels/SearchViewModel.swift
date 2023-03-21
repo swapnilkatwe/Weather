@@ -38,7 +38,7 @@ class SearchViewModel: NSObject {
               let longitude = filteredCities[indexPath.row].lon else { return }
 
         SessionManager.shared.currentCoordinate = CLLocationCoordinate2DMake(latitude, longitude)
-        
+        SessionManager.shared.selectedCity = filteredCities[indexPath.row].name
         self.delegate?.locationUpdated()
     }
     

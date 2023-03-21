@@ -34,7 +34,7 @@ class WeatherInfoViewModel: NSObject {
     }
 
     var cityName: String {
-        guard let city = currentWeather?.name else { return "-" }
+        guard let city = SessionManager.shared.selectedCity else { return currentWeather?.name ?? "-" }
         return city
     }
 
@@ -73,6 +73,7 @@ class WeatherInfoViewModel: NSObject {
             long: SessionManager.shared.currentCoordinate?.longitude) { [weak self] result in
             switch result {
             case .success(let weather):
+                debugPrint("\(weather)")
                 self?.currentWeather = weather
             case .failure(let error):
                 print(error)
@@ -94,7 +95,6 @@ extension WeatherInfoViewModel:  CLLocationManagerDelegate  {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = manager.location?.coordinate else { return }
-        print("-->\(location.latitude), \(location.longitude)")
 
         SessionManager.shared.currentCoordinate = location
         locationManager.stopUpdatingLocation()

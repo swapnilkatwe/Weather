@@ -60,10 +60,4 @@ class WeatherInfoViewController: UIViewController {
         controller.modalPresentationStyle = .overFullScreen
         present(controller, animated: true, completion: nil)
     }
-
-    @IBAction func currentLocationPressed(_ sender: UIBarButtonItem) {
-        DispatchQueue.main.async {
-            self.viewModel.getActualLocationWeather()
-        }
-    }
 }

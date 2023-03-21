@@ -21,6 +21,8 @@ class SessionManager {
         }
     }
 
+    var selectedCity: String?
+
     // Saving location in keychain to retrive again
     private func saveLocattion(_ coordinate: CLLocationCoordinate2D?) {
         KeychainManager().saveDouble(coordinate?.latitude ?? 0.0, forKey: Constants().coordinateLatitude)
@@ -28,8 +30,8 @@ class SessionManager {
     }
     
     private var getLocation: CLLocationCoordinate2D? {
-        let lat = KeychainManager().doubleForKey(Constants().coordinateLatitude) ?? 0.0
-        let long = KeychainManager().doubleForKey(Constants().coordinateLongitude) ?? 0.0
+        guard let lat = KeychainManager().doubleForKey(Constants().coordinateLatitude),
+              let long = KeychainManager().doubleForKey(Constants().coordinateLongitude) else { return nil }
         return CLLocationCoordinate2D(latitude: lat, longitude: long)
     }
 }
