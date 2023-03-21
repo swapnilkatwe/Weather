@@ -24,7 +24,6 @@ class WeatherInfoViewController: UIViewController {
     //MARK: - lyfecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        getActualLocationWeather()
         currentLocation()
         setup()
     }
@@ -42,15 +41,7 @@ class WeatherInfoViewController: UIViewController {
     }
 
     private func currentLocation() {
-        DispatchQueue.main.async {
-            self.viewModel.getCurrentLocation()
-        }
-    }
-    
-    private func getActualLocationWeather() {
-        DispatchQueue.main.async {
-            self.viewModel.getActualLocationWeather()
-        }
+        self.viewModel.getCurrentLocation()
     }
 
     //MARK: - IBActions

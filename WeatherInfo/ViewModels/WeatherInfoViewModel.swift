@@ -43,15 +43,15 @@ class WeatherInfoViewModel: NSObject {
     }
     
     //MARK: - Location
-    func getActualLocationWeather() {
-        actualLocation()
-    }
 
     func getCurrentLocation() {
-        if SessionManager().currentCoordinate != nil {
-            getCurrentWeather()
-        } else {
-            actualLocation()
+        DispatchQueue.global().async {
+            if CLLocationManager.locationServicesEnabled() {
+                if SessionManager().currentCoordinate != nil {
+                    self.getCurrentWeather()
+                }
+                else { self.actualLocation() }
+            } else { self.actualLocation() }
         }
     }
 
